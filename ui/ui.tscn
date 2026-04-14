@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://ci83j3teipvjy"]
+
+[ext_resource type="Theme" uid="uid://c6rueeg3t4twp" path="res://ui/ui_theme.tres" id="1_nb4k0"]
+[ext_resource type="Script" uid="uid://bqplkxfpa2nxg" path="res://ui/menus/navigation/file_menu.gd" id="2_ks8t7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ks8t7"]
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.13333334, 0.13333334, 0.13333334, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+border_blend = true
+corner_detail = 1
+
+[node name="UI" type="Control" unique_id=246745677]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NavigationBar" type="PanelContainer" parent="." unique_id=506326153]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme = ExtResource("1_nb4k0")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ks8t7")
+
+[node name="NavigationMenu" type="HBoxContainer" parent="NavigationBar" unique_id=1856395758]
+layout_mode = 2
+
+[node name="FileMenuButton" type="MenuButton" parent="NavigationBar/NavigationMenu" unique_id=2092139975]
+layout_mode = 2
+text = "File"
+flat = false
+switch_on_hover = true
+item_count = 7
+popup/item_0/text = "New..."
+popup/item_0/id = 0
+popup/item_0/disabled = true
+popup/item_1/text = "Open..."
+popup/item_1/id = 1
+popup/item_2/id = 2
+popup/item_2/separator = true
+popup/item_3/text = "Save"
+popup/item_3/id = 2
+popup/item_4/text = "Save as..."
+popup/item_4/id = 3
+popup/item_5/id = 3
+popup/item_5/separator = true
+popup/item_6/text = "Quit"
+popup/item_6/id = 4
+script = ExtResource("2_ks8t7")
