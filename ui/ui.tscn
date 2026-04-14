@@ -22,13 +22,14 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_nb4k0")
 
 [node name="NavigationBar" type="PanelContainer" parent="." unique_id=506326153]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_bottom = 30.0
 grow_horizontal = 2
-theme = ExtResource("1_nb4k0")
 theme_override_styles/panel = SubResource("StyleBoxFlat_ks8t7")
 
 [node name="NavigationMenu" type="HBoxContainer" parent="NavigationBar" unique_id=1856395758]
@@ -56,3 +57,33 @@ popup/item_5/separator = true
 popup/item_6/text = "Quit"
 popup/item_6/id = 4
 script = ExtResource("2_ks8t7")
+
+[node name="LeftBorderBar" type="PanelContainer" parent="." unique_id=789867975]
+z_index = -1
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 30.0
+grow_vertical = 2
+
+[node name="RightBorderBar" type="PanelContainer" parent="." unique_id=2094968559]
+z_index = -1
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="BottomDataBar" type="PanelContainer" parent="." unique_id=868179011]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -30.0
+offset_bottom = -0.00048828125
+grow_horizontal = 2
+grow_vertical = 0
