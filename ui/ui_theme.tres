@@ -50,6 +50,10 @@ border_color = Color(0.09803922, 0.09803922, 0.09803922, 1)
 border_blend = true
 corner_detail = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t73vd"]
+bg_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
+corner_detail = 1
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_udl1o"]
 content_margin_left = 20.0
 content_margin_right = 20.0
@@ -96,6 +100,8 @@ Button/styles/focus = SubResource("StyleBoxEmpty_1eq05")
 Button/styles/hover = SubResource("StyleBoxFlat_vuqvt")
 Button/styles/normal = SubResource("StyleBoxFlat_bp0j3")
 Button/styles/pressed = SubResource("StyleBoxFlat_cnyj1")
+LargePanelContainer/base_type = &"PanelContainer"
+LargePanelContainer/styles/panel = SubResource("StyleBoxFlat_t73vd")
 MenuButton/styles/hover = SubResource("StyleBoxFlat_udl1o")
 MenuButton/styles/normal = SubResource("StyleBoxFlat_kbk24")
 MenuButton/styles/pressed = SubResource("StyleBoxFlat_mbvn8")
