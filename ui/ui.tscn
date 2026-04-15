@@ -2,6 +2,9 @@
 
 [ext_resource type="Theme" uid="uid://c6rueeg3t4twp" path="res://ui/ui_theme.tres" id="1_nb4k0"]
 [ext_resource type="Script" uid="uid://bqplkxfpa2nxg" path="res://ui/menus/navigation/file_menu.gd" id="2_ks8t7"]
+[ext_resource type="Script" uid="uid://bk4wk354ueew3" path="res://ui/renderer_window.gd" id="3_tf0e0"]
+[ext_resource type="Script" uid="uid://bq13cvggwqb2r" path="res://ui/gizmos/viewport_orientation/orientation_gizmo_overlay.gd" id="3_wl5ax"]
+[ext_resource type="PackedScene" uid="uid://dy5akndp03yu4" path="res://ui/gizmos/viewport_orientation/viewport_orientation_gizmo.tscn" id="4_vkava"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ks8t7"]
 content_margin_top = 0.0
@@ -12,6 +15,9 @@ border_width_bottom = 2
 border_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
 border_blend = true
 corner_detail = 1
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tf0e0"]
+viewport_path = NodePath("RendererMargin/GizmoContainer/OrientationGizmoSubViewport")
 
 [node name="UI" type="Control" unique_id=246745677]
 layout_mode = 3
@@ -24,7 +30,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_nb4k0")
 
-[node name="NavigationBar" type="PanelContainer" parent="." unique_id=506326153]
+[node name="BorderBars" type="Control" parent="." unique_id=241879401]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NavigationBar" type="PanelContainer" parent="BorderBars" unique_id=506326153]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -32,10 +46,10 @@ offset_bottom = 30.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ks8t7")
 
-[node name="NavigationMenu" type="HBoxContainer" parent="NavigationBar" unique_id=1856395758]
+[node name="NavigationMenu" type="HBoxContainer" parent="BorderBars/NavigationBar" unique_id=1856395758]
 layout_mode = 2
 
-[node name="FileMenuButton" type="MenuButton" parent="NavigationBar/NavigationMenu" unique_id=2092139975]
+[node name="FileMenuButton" type="MenuButton" parent="BorderBars/NavigationBar/NavigationMenu" unique_id=2092139975]
 layout_mode = 2
 text = "File"
 flat = false
@@ -58,7 +72,7 @@ popup/item_6/text = "Quit"
 popup/item_6/id = 4
 script = ExtResource("2_ks8t7")
 
-[node name="LeftBorderBar" type="PanelContainer" parent="." unique_id=789867975]
+[node name="LeftBorderBar" type="PanelContainer" parent="BorderBars" unique_id=789867975]
 z_index = -1
 layout_mode = 1
 anchors_preset = 9
@@ -66,7 +80,7 @@ anchor_bottom = 1.0
 offset_right = 30.0
 grow_vertical = 2
 
-[node name="RightBorderBar" type="PanelContainer" parent="." unique_id=2094968559]
+[node name="RightBorderBar" type="PanelContainer" parent="BorderBars" unique_id=2094968559]
 z_index = -1
 layout_mode = 1
 anchors_preset = 11
@@ -77,7 +91,7 @@ offset_left = -30.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="BottomDataBar" type="PanelContainer" parent="." unique_id=868179011]
+[node name="BottomDataBar" type="PanelContainer" parent="BorderBars" unique_id=868179011]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -88,21 +102,82 @@ offset_bottom = -0.00048828125
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=619167466]
+[node name="BorderBarsMargin" type="MarginContainer" parent="." unique_id=619167466]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="ParamsContainer" type="PanelContainer" parent="MarginContainer" unique_id=1321440019]
+[node name="RenderToolbarMargin" type="MarginContainer" parent="BorderBarsMargin" unique_id=1219669753]
+layout_mode = 2
+theme_override_constants/margin_right = 300
+
+[node name="RendererToolbar" type="PanelContainer" parent="BorderBarsMargin/RenderToolbarMargin" unique_id=749096457]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ParamsContainer" type="PanelContainer" parent="BorderBarsMargin" unique_id=1321440019]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 theme = ExtResource("1_nb4k0")
 theme_type_variation = &"LargePanelContainer"
+
+[node name="RendererMargin" type="MarginContainer" parent="." unique_id=233340234]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 330
+theme_override_constants/margin_bottom = 30
+
+[node name="RendererWindow" type="Control" parent="RendererMargin" unique_id=1314063768]
+layout_mode = 2
+script = ExtResource("3_tf0e0")
+
+[node name="GizmoContainer" type="Control" parent="RendererMargin" unique_id=1007843030]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="OrientationGizmoOverlay" type="TextureRect" parent="RendererMargin/GizmoContainer" unique_id=1228301779 node_paths=PackedStringArray("orientation_gizmo_viewport")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+texture = SubResource("ViewportTexture_tf0e0")
+stretch_mode = 5
+script = ExtResource("3_wl5ax")
+orientation_gizmo_viewport = NodePath("../OrientationGizmoSubViewport")
+
+[node name="OrientationGizmoSubViewport" type="SubViewport" parent="RendererMargin/GizmoContainer" unique_id=48515192]
+transparent_bg = true
+physics_object_picking = true
+size = Vector2i(125, 125)
+
+[node name="GizmoCamera3D" type="Camera3D" parent="RendererMargin/GizmoContainer/OrientationGizmoSubViewport" unique_id=261535299]
+cull_mask = 524288
+projection = 1
+size = 0.3
+far = 1.0
+
+[node name="ViewportOrientationGizmo" parent="RendererMargin/GizmoContainer/OrientationGizmoSubViewport" unique_id=855064271 instance=ExtResource("4_vkava")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016, -0.025, -0.259)
+
+[connection signal="gui_input" from="RendererMargin/GizmoContainer/OrientationGizmoOverlay" to="RendererMargin/GizmoContainer/OrientationGizmoOverlay" method="_on_gui_input"]
+[connection signal="GizmoClicked" from="RendererMargin/GizmoContainer/OrientationGizmoSubViewport/ViewportOrientationGizmo" to="RendererMargin/RendererWindow" method="_on_viewport_orientation_gizmo_gizmo_clicked"]
