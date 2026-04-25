@@ -168,7 +168,7 @@ orientation_gizmo_viewport = NodePath("../OrientationGizmoSubViewport")
 [node name="OrientationGizmoSubViewport" type="SubViewport" parent="RendererMargin/GizmoContainer" unique_id=48515192]
 transparent_bg = true
 physics_object_picking = true
-size = Vector2i(125, 125)
+size = Vector2i(100, 100)
 
 [node name="GizmoCamera3D" type="Camera3D" parent="RendererMargin/GizmoContainer/OrientationGizmoSubViewport" unique_id=261535299]
 cull_mask = 524288

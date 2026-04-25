@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://b2onsg1ps34i2"]
 
 [ext_resource type="PackedScene" uid="uid://ci83j3teipvjy" path="res://ui/ui.tscn" id="1_ig7tw"]
-[ext_resource type="Theme" uid="uid://c6rueeg3t4twp" path="res://ui/ui_theme.tres" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dntsgdwu8c7ea" path="res://editor/editor.tscn" id="2_0xm2m"]
 
 [node name="Main" type="Node" unique_id=1276428700]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1533769745]
+[node name="UI" parent="." unique_id=246745677 instance=ExtResource("1_ig7tw")]
 
-[node name="UI" parent="CanvasLayer" unique_id=246745677 instance=ExtResource("1_ig7tw")]
-theme = ExtResource("2_0xm2m")
+[node name="3DEditor" parent="." unique_id=1122101013 instance=ExtResource("2_0xm2m")]

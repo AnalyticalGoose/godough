@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dntsgdwu8c7ea"]
+
+[ext_resource type="Shader" uid="uid://ld80hdxkpv76" path="res://editor/grid_shader.gdshader" id="1_ndqoc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mp1hq"]
+render_priority = 0
+shader = ExtResource("1_ndqoc")
+shader_parameter/world_scale = Vector2(10, 10)
+shader_parameter/scale_0 = 1
+shader_parameter/line_scale_0 = 0.02
+shader_parameter/color_0 = Color(1, 1, 1, 1)
+shader_parameter/dashed_scale_mult = 2.0
+shader_parameter/dashed_line_width = 0.04
+shader_parameter/dash_count = 4.0
+shader_parameter/dashed_color = Color(1, 1, 1, 1)
+shader_parameter/border_width = 0.001
+shader_parameter/border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h3k4n"]
+material = SubResource("ShaderMaterial_mp1hq")
+size = Vector2(20, 20)
+
+[node name="Editor" type="Node3D" unique_id=1122101013]
+
+[node name="GroundMesh" type="MeshInstance3D" parent="." unique_id=727445556]
+mesh = SubResource("PlaneMesh_h3k4n")

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://wr4a8tihcpg4"]
+
+[ext_resource type="Script" uid="uid://b1fmaioo6ch7j" path="res://editor/camera/camera_controller.gd" id="1_h48li"]
+
+[node name="CameraController" type="Node3D" unique_id=2043222208]
+script = ExtResource("1_h48li")
+
+[node name="CameraRotationXPivot" type="Node3D" parent="." unique_id=36284164]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+
+[node name="CameraZoomPivot" type="Node3D" parent="CameraRotationXPivot" unique_id=467579753]
+
+[node name="Camera3D" type="Camera3D" parent="CameraRotationXPivot/CameraZoomPivot" unique_id=198840669]
