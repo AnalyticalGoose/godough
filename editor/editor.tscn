@@ -1,6 +1,20 @@
 [gd_scene format=3 uid="uid://dntsgdwu8c7ea"]
 
 [ext_resource type="Shader" uid="uid://ld80hdxkpv76" path="res://editor/grid_shader.gdshader" id="1_ndqoc"]
+[ext_resource type="PackedScene" uid="uid://wr4a8tihcpg4" path="res://editor/camera/camera_controller.tscn" id="2_fjngd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjngd"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_er7c6"]
+sky_material = SubResource("ProceduralSkyMaterial_fjngd")
+
+[sub_resource type="Environment" id="Environment_j82do"]
+background_mode = 2
+sky = SubResource("Sky_er7c6")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mp1hq"]
 render_priority = 0
@@ -22,5 +36,15 @@ size = Vector2(20, 20)
 
 [node name="Editor" type="Node3D" unique_id=1122101013]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1233195097]
+environment = SubResource("Environment_j82do")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=580430001]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
 [node name="GroundMesh" type="MeshInstance3D" parent="." unique_id=727445556]
 mesh = SubResource("PlaneMesh_h3k4n")
+
+[node name="CameraController" parent="." unique_id=2043222208 instance=ExtResource("2_fjngd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 8)

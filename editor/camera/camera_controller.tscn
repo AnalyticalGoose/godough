@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://b1fmaioo6ch7j" path="res://editor/camera/camera_controller.gd" id="1_h48li"]
 
-[node name="CameraController" type="Node3D" unique_id=2043222208]
+[node name="CameraController" type="Node3D" unique_id=2043222208 node_paths=PackedStringArray("_rotation_x_pivot", "_zoom_pivot", "_camera")]
 script = ExtResource("1_h48li")
+_rotation_x_pivot = NodePath("CameraRotationXPivot")
+_zoom_pivot = NodePath("CameraRotationXPivot/CameraZoomPivot")
+_camera = NodePath("CameraRotationXPivot/CameraZoomPivot/Camera3D")
 
 [node name="CameraRotationXPivot" type="Node3D" parent="." unique_id=36284164]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
@@ -11,3 +14,4 @@ transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70
 [node name="CameraZoomPivot" type="Node3D" parent="CameraRotationXPivot" unique_id=467579753]
 
 [node name="Camera3D" type="Camera3D" parent="CameraRotationXPivot/CameraZoomPivot" unique_id=198840669]
+cull_mask = 524287
