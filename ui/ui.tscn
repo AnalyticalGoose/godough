@@ -28,6 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme = ExtResource("1_nb4k0")
 
 [node name="BorderBars" type="Control" parent="." unique_id=241879401]
@@ -146,6 +147,7 @@ theme_override_constants/margin_bottom = 30
 
 [node name="RendererWindow" type="Control" parent="RendererMargin" unique_id=1314063768]
 layout_mode = 2
+mouse_filter = 2
 script = ExtResource("3_tf0e0")
 
 [node name="GizmoContainer" type="Control" parent="RendererMargin" unique_id=1007843030]

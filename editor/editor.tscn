@@ -5,6 +5,7 @@
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjngd"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_bottom_color = Color(0.2520276, 0.25202766, 0.25202757, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
 [sub_resource type="Sky" id="Sky_er7c6"]
@@ -36,6 +37,9 @@ size = Vector2(20, 20)
 
 [node name="Editor" type="Node3D" unique_id=1122101013]
 
+[node name="CameraController" parent="." unique_id=2043222208 instance=ExtResource("2_fjngd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 8)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1233195097]
 environment = SubResource("Environment_j82do")
 
@@ -45,6 +49,3 @@ shadow_enabled = true
 
 [node name="GroundMesh" type="MeshInstance3D" parent="." unique_id=727445556]
 mesh = SubResource("PlaneMesh_h3k4n")
-
-[node name="CameraController" parent="." unique_id=2043222208 instance=ExtResource("2_fjngd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 8)
